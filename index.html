@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aser Sales Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Aser Sales Tracker</h1>
+        <button id="addProspectBtn">Add New Prospect</button>
+        <div id="addProspectForm" class="hidden">
+            <h2>Add New Prospect</h2>
+            <form id="prospectForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                
+                <label for="nextAction">Next Action:</label>
+                <input type="text" id="nextAction" required>
+                
+                <label for="nextActionDate">Next Action Date:</label>
+                <input type="date" id="nextActionDate" required>
+                
+                <label for="notes">Notes:</label>
+                <textarea id="notes"></textarea>
+                
+                <button type="submit">Add Prospect</button>
+            </form>
+        </div>
+        <div id="tabsContainer">
+            <button class="tab active" data-status="New">New</button>
+            <button class="tab" data-status="Contacted">Contacted</button>
+            <button class="tab" data-status="Presented">Presented</button>
+            <button class="tab" data-status="FollowUp">Follow Up</button>
+            <button class="tab" data-status="Purchased">Purchased</button>
+        </div>
+        <div id="prospectsList"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
