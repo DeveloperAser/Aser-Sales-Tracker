@@ -3,134 +3,135 @@
 :root {
     --primary-color: #00ffcc; /* Neon Aqua */
     --secondary-color: #ff0066; /* Neon Pink */
-    --accent-color: #ffcc00; /* Neon Yellow */
     --background-color: #1a1a1a; /* Dark Background */
     --text-color: #eaeaea; /* Light Text */
     --card-background: #2a2a2a; /* Dark Card Background */
-    --glow-color: rgba(255, 255, 255, 0.1); /* Glow Effect */
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
+    animation: fadeIn 0.5s ease-in; /* Smooth entry animation */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
     margin: auto;
-    padding: 20px;
+    padding: 30px;
 }
 
 h1 {
     color: var(--primary-color);
     text-align: center;
-    font-weight: 600;
-    margin-bottom: 30px;
-    text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
+    margin-bottom: 20px;
+    font-size: 2.5em; /* Adjusted size */
 }
 
 button {
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px; /* Adjusted padding for buttons */
     border: none;
-    border-radius: 5px;
+    border-radius: 25px; /* Rounded buttons */
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+    box-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--secondary-color);
 }
 
 button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--secondary-color), 0 0 40px var(--secondary-color);
+    transform: translateY(-2px) scale(1.05); /* Slight scale effect */
+    box-shadow: 0 0 10px var(--primary-color), 0 0 15px var(--secondary-color);
 }
 
 .btn-new {
     font-weight: bold;
-    margin-right: 10px; /* Space between buttons */
-}
-
-.hidden {
-    display: none;
+    margin-right: 10px;
 }
 
 form {
     background: var(--card-background);
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 12px; /* Slightly rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-form input, form textarea {
+form input,
+form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    background-color: #333; /* Darker Input Field */
+    border: none; /* Removed border for a clean look */
+    border-radius: 8px; /* Rounded input fields */
+    background-color: #333;
     color: #eaeaea;
-    transition: border 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-form input:focus, form textarea:focus {
-    border: 1px solid var(--primary-color);
-    outline: none;
+form input::placeholder,
+textarea::placeholder {
+    color: rgba(234, 234, 234, 0.7);
+}
+
+form input:focus,
+form textarea:focus {
+    background-color: #444; /* Darker background on focus */
+    outline: none; /* Remove default outline */
 }
 
 #tabsContainer {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    overflow-x: auto;
 }
 
 .tab {
     background-color: #444;
     color: var(--text-color);
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    padding: 12px 18px; /* Adjusted padding */
+    font-size: 1.2em; /* Increased font size */
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px var(--glow-color);
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .tab.active {
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     color: white;
-    box-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--secondary-color);
+}
+
+.tab:hover {
+    transform: translateY(-2px); /* Subtle lift effect on hover */
 }
 
 .prospect-card {
     background: var(--card-background);
-    padding: 20px;
+    padding: 15px;
     margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    border-radius: 12px; /* Rounded card corners */
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .prospect-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--secondary-color);
-}
-
-.status-indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
+    transform: translateY(-5px) scale(1.02); /* Lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 255, 204, 0.5); /* Subtle glow effect */
 }
 
 .prospect-actions {
@@ -146,21 +147,15 @@ form input:focus, form textarea:focus {
     padding: 5px 10px;
     border-radius: 5px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 5px var(--secondary-color);
 }
 
 .prospect-actions button:hover {
     background: var(--secondary-color);
     color: white;
-    box-shadow: 0 0 10px var(--secondary-color), 0 0 15px var(--glow-color);
+    transform: scale(1.05); /* Slightly grow on hover */
 }
 
-/* Additional Improvements for UI */
-input::placeholder,
-textarea::placeholder {
-    color: rgba(234, 234, 234, 0.7); /* Light placeholder text */
-}
-
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .container {
         width: 95%;
@@ -176,7 +171,7 @@ textarea::placeholder {
     }
 
     .btn-new {
-        width: 100%; /* Make buttons stack on smaller screens */
-        margin: 5px 0; /* Space out vertically */
+        width: 100%; /* Stack buttons on smaller screens */
+        margin: 5px 0;
     }
 }
