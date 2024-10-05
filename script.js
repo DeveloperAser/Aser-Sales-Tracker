@@ -11,12 +11,22 @@ function saveProspects() {
     localStorage.setItem('prospects', JSON.stringify(prospects));
 }
 
+function validateForm(name, nextAction, nextActionDate) {
+    return name && nextAction && nextActionDate; // Ensure required fields are filled
+}
+
 function addProspect(event) {
     event.preventDefault();
-    const name = document.getElementById('name').value;
+    const name = document.getElementById('name').value.trim();
     const nextAction = document.getElementById('nextAction').value;
     const nextActionDate = document.getElementById('nextActionDate').value;
-    const notes = document.getElementById('notes').value;
+    const notes = document.getElementById('notes').value.trim();
+
+    // Validate form
+    if (!validateForm(name, nextAction, nextActionDate)) {
+        alert('Please fill out all required fields.');
+        return;
+    }
 
     const newProspect = {
         id: Date.now().toString(),
@@ -80,13 +90,12 @@ function renderProspects() {
     filteredProspects.forEach((prospect, index) => {
         const prospectCard = document.createElement('div');
         prospectCard.className = 'prospect-card';
-        prospectCard.style.opacity = '0';
-        prospectCard.style.transform = 'translateY(20px)';
         prospectCard.innerHTML = `
             <h3>${prospect.name}</h3>
             <p>Next Action: ${prospect.nextAction}</p>
             <p>Date: ${prospect.nextActionDate}</p>
             <p>Notes: ${prospect.notes}</p>
+            <div class="status-indicator" style="background-color: ${statusColors[prospect.status]}"></div>
             <select onchange="updateProspectStatus('${prospect.id}', this.value)">
                 ${Object.keys(statusColors).map(status => 
                     `<option value="${status}" ${status === prospect.status ? 'selected' : ''}>${status}</option>`
@@ -98,11 +107,6 @@ function renderProspects() {
             </div>
         `;
         prospectsList.appendChild(prospectCard);
-      setTimeout(() => {
-            prospectCard.style.transition = 'opacity 0.5s, transform 0.5s';
-            prospectCard.style.opacity = '1';
-            prospectCard.style.transform = 'translateY(0)';
-        }, index * 100); // Stagger the animations
     });
 }
 
@@ -121,3 +125,4 @@ document.querySelectorAll('.tab').forEach(tab => {
 });
 
 renderProspects();
+
