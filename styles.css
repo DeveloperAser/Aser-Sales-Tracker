@@ -3,6 +3,7 @@
 :root {
     --primary-color: #4a90e2;
     --secondary-color: #50e3c2;
+    --accent-color: #ff4757; /* New accent color */
     --background-color: #f8f9fa;
     --text-color: #333;
     --card-background: #ffffff;
@@ -99,50 +100,22 @@ form input, form textarea {
     margin-bottom: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
 .prospect-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
 }
 
-.prospect-card h3 {
-    margin-top: 0;
-    color: var(--primary-color);
-}
-
-.prospect-card select {
-    margin-top: 10px;
-    width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 .prospect-actions {
-    margin-top: 15px;
     display: flex;
-    justify-content: flex-end;
-}
-
-.prospect-actions button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    font-size: 14px;
-}
-
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-    }
-    
-    #tabsContainer {
-        flex-wrap: wrap;
-    }
-    
-    .tab {
-        flex-grow: 1;
-        margin-bottom: 10px;
-    }
+    justify-content: space-between;
+    margin-top: 10px;
 }
