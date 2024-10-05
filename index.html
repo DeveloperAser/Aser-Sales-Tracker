@@ -4,38 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aser Sales Tracker</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Aser Sales Tracker</h1>
-        <button id="addProspectBtn">Add New Prospect</button>
-        <div id="addProspectForm" class="hidden">
-            <h2>Add New Prospect</h2>
-            <form id="prospectForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
-                
-                <label for="nextAction">Next Action:</label>
-                <input type="text" id="nextAction" required>
-                
-                <label for="nextActionDate">Next Action Date:</label>
-                <input type="date" id="nextActionDate" required>
-                
-                <label for="notes">Notes:</label>
-                <textarea id="notes"></textarea>
-                
-                <button type="submit">Add Prospect</button>
-            </form>
-        </div>
+        
         <div id="tabsContainer">
-            <button class="tab active" data-status="New">New</button>
-            <button class="tab" data-status="Contacted">Contacted</button>
-            <button class="tab" data-status="Presented">Presented</button>
-            <button class="tab" data-status="FollowUp">Follow Up</button>
-            <button class="tab" data-status="Purchased">Purchased</button>
+            <button class="tab active">Overview</button>
+            <button class="tab">Prospects</button>
+            <button class="tab">Settings</button>
         </div>
-        <div id="prospectsList"></div>
+
+        <div class="prospect-actions">
+            <button class="btn-new" id="addProspectBtn">Add New Prospect</button>
+            <button class="btn-new" id="newBtn">New</button>
+        </div>
+
+        <form>
+            <input type="text" placeholder="Prospect Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Notes" rows="4"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="prospect-card">
+            <h3>John Doe</h3>
+            <p>Email: johndoe@example.com</p>
+            <div class="prospect-actions">
+                <button>Edit</button>
+                <button>Delete</button>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
